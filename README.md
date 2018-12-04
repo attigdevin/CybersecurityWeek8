@@ -18,26 +18,30 @@ Each version of the site has been given two of the six vulnerabilities. (In othe
 
 Vulnerability #1: SQL Injection\
 This is done by going to /blue/public/salesperson.php?id=1 and replacing the 1 with an SQL injection like: ' OR SLEEP(5)=0--'
+![](sql.gif)
 
 Vulnerability #2: Session Hijacking/Fixation\
 This can be seen quite easily by logging in/out and noticing that the PHPSESSID cookie does not change.
-
+![](sess.gif)
 
 ## Green
 
 Vulnerability #1: XSS\
 This works because HTML is not escaped when feedback is presented to staff on the /green/public/staff/feedback/index.php page. This lets malicious users use a <script> tag in order to gain full JavaScript execution.
+![](xss.gif)
 
 Vulnerability #2: See note at the bottom. All 3 websites have a user enumeration vulnerability.
-
+![](user_enum.gif)
 
 ## Red
 
 Vulnerability #1: IDOR\
 Salesmen IDs which are no longer in use can still be viewed if manually set. For example, going to /red/public/salesperson.php?id=10 provides access to private information.
+![](idor.gif)
 
 Vulnerability #2: CSRF\
 The CSRF tokens generated for submissions to /red/public/staff/users/edit.php?id=ID are not used. This allows attackers to create auto-submitting forms that force admins to submit changes to this endpoint. This would allow an attacker to change a user's name.
+![](csrf.gif)
 
 
 ## Notes
